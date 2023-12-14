@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "../../../../Desktop/creators"
+		},
+		{
+			"path": "../images"
+		},
+		{
+			"path": "../pages"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../styles"
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501,
+		"liveServer.settings.multiRootWorkspaceName": "images"
+	}
+}

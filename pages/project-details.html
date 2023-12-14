@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> <!--Title name dynamic--> </title>
+    <link href="https://d19j0qt0x55bap.cloudfront.net/production/assets/favicon-79f58af77fc082ce75bd69fc8bdb2dfd.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./../styles/footer.css">
+    <link rel="stylesheet" href="./../styles/project-details-style.css">
+    <link rel="stylesheet" href="./../styles/kanav_common_style.css">
+    <link rel="stylesheet" href="./../styles/index.css">
+</head>
+<body>
+    
+    <!-- Nav Bar Start -->
+    <nav id="nav_cont">
+        <div id="nav_logo_div">
+            <a href="./../index.html">
+                <img id="nav_logo_img" src="./../images/Creators_nav_logo.png">
+            </a>
+        </div>
+        <div id="nav_ele">
+            <a id="nav_anchor_Signin" onclick="showdropdown()" href="./../pages/login.html">Sign In</a>
+            <a id="nav_anchor_getfunding" href="./../pages/funding.html">Get Funding</a>
+            <a id="nav_anchor_fill_startinvesting" href="./../pages/start-investing.html"><span>Start Investing</span></a>
+        </div>
+    </nav>
+    <div class="index_nav_drop">
+        <p>Hello,<span id="drop_username">username</span> </p>
+        <p onclick="signout()">Sign Out</p>
+    </div>
+    <!-- Nav Bar End -->
+
+    <div class="container">
+        <div class="name-details-categories">
+            <div class="display-column">
+                <h3 class="title"></h3>
+                <h4 class="desc project-tagline"></h4>
+            </div>
+        </div>
+        <div class="stats-and-video">
+            <div class="image-div">
+                <div class="video-mobile gce-original-image"></div>
+                <div class="categories">
+                    <div class="site-location">
+                        <div class="website-div">
+                            <i class="fa fa-compass compass"></i>
+                            <a href="#" class="website-link" target="_blank">Website</a> <!--Change href from DB-->
+                        </div>
+                        <div class="location-div">
+                            <i class="fa fa-map-marker map"></i>
+                            <span id="project-location"> <!--Project Location--> </span>
+                        </div>
+                    </div>
+                    <div class="desktop-categories">
+                        <div class="project-category"><i class="fa fa-map-marker map"></i> <!--Here Project Category will be placed--> </div>
+                    </div>
+                </div>
+                <div class="elevator-pitch"></div>
+            </div>
+            <div class="details-div">
+                <div class="offering-stats">
+                    <div class="baseline-flex">
+                        <h2 class="multi-raise-se-number"></h2>
+                        <div class="raised">raised</div>
+                    </div>
+                    <div class="stats-line"></div>
+                    <!-- Row 1/4 of Stats-- Investor Count && Valuation -->
+                    <div class="row">
+                        <div id="investors-num">
+                            <h5></h5>
+                            <h6>Investors</h6>
+                        </div>
+                        <div id="valuation-num">
+                            <h5></h5>
+                            <h6>Valuation</h6>
+                        </div>
+                    </div>
+                    <!-- Row 2/4 of Stats -- Annual Interest Rate for Convertible/PricePerShare && Min. Investment -->
+                    <div class="row">
+                        <div id="price-per-share-num">
+                            <h5></h5>
+                            <h6>Price per Share</h6>
+                        </div>
+                        <div id="min-investment-num">
+                            <h5></h5>
+                            <h6>Min. Investment</h6>
+                        </div>
+                    </div>
+                    <!-- Row 3/4 of Stats -- SecurityName/DiscountRate && OfferingType -->
+                    <div class="row">
+                        <div id="shares-offered-type">
+                            <h5></h5>
+                            <h6>Shared Offered</h6>
+                        </div>
+                        <div id="offering-type-equity">
+                            <h5></h5>
+                            <h6>Offering Type</h6>
+                        </div>
+                    </div>
+                    <!-- Row 4/4 of Stats -- OfferingMax/Maturity & OfferingType/Days Left -->
+                    <div class="row">
+                        <div id="offering-max-num">
+                            <h5></h5>
+                            <h6>Offering Max</h6>
+                        </div>
+                        <div id="offering-type">
+                            <h5></h5>
+                            <h6>Offering</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="invest-or-reserve">
+                    <div class="invest-btn">
+                        <a href="#" class="btn invest-now-btn">Invest Now</a>
+                    </div>
+                    <div>
+                        <p class="banner-text"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./../scripts/index.js"></script>
+    <script src="./../scripts/project-details.js"></script>
+</body>
+</html>
