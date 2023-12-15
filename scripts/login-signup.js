@@ -4,51 +4,40 @@ if (uniqueUserId == null) uniqueUserId = 1010;
 
 // Function invoked on User Sign Up
 
-// function signUp() {
-//     let allUsers = JSON.parse(localStorage.getItem("allUsers"));
-//     if (allUsers == null) allUsers = [];
-//     var newUsertoAdd = {
-//         id: uniqueUserId,
-//         userFName: document.querySelector("#fName").value,
-//         userLName: document.querySelector("#lName").value,
-//         userEmail: document.querySelector("#email").value,
-//         userPass: document.querySelector("#password").value
-//     };
-//     if (allUsers.length != 0 && userExists(newUsertoAdd.userEmail)) {
-//         document.querySelector("#sign-up-id").textContent = "User already exists...";
-//         setTimeout(() => {
-//             document.querySelector("#sign-up-id").textContent = "Sign Up";
-//         }, 1200)
-//         return;
-//     }
-//     allUsers.push(newUsertoAdd);
-//     localStorage.setItem("loggedDetails", JSON.stringify([{ isLogged: true }, newUsertoAdd]))
-//     localStorage.setItem("uniqueUserCounter", JSON.stringify(++uniqueUserId));
-//     localStorage.setItem("allUsers", JSON.stringify(allUsers));
-
-//     document.querySelector("#sign-up-id").textContent = "Sign Up Successful...";
-
-//     let pageFrom = JSON.parse(localStorage.getItem("userComingfrom"));
-//     if (pageFrom == "projectDetailsPage") {
-//         setTimeout(() => {
-//             location.href = "./investment_user_details.html";
-//         }, 1500)
-//     } else {
-//         setTimeout(() => {
-//             location.href = "./../index.html";
-//         }, 1500)
-//     }
-//     localStorage.removeItem("userComingfrom");
-// }
 
 function signUp() {
-    const userData = {
-        userFName: document.querySelector("#fName").value,
-        userLName: document.querySelector("#lName").value,
-        userEmail: document.querySelector("#email").value,
-        userPass: document.querySelector("#password").value
-    };
+    // Fetch user input
+    const fName = document.querySelector("#fName").value;
+    const lName = document.querySelector("#lName").value;
+    const email = document.querySelector("#email").value;
+    const password = document.querySelector("#password").value;
 
+    // Basic validation
+    if (!fName || !lName || !email || !password) {
+        alert("All fields are required");
+        return;
+    }
+
+    // Additional validation (you can customize this based on your requirements)
+    if (fName.length < 4 || fName.length > 30) {
+        alert("Name should be between 4 and 30 characters");
+        return;
+    }
+    // Password validation
+    if (password.length < 6) {
+        alert("Password should be at least 6 characters");
+        return;
+    }
+
+    // You can add similar validations for other fields
+
+    // If all validations pass, make the API call
+    const userData = {
+        userFName: fName,
+        userLName: lName,
+        userEmail: email,
+        userPass: password,
+    };
     fetch('http://localhost:4000/api/v1/register', {
         method: 'POST',
         headers: {
@@ -59,13 +48,39 @@ function signUp() {
         .then(response => response.json())
         .then(data => {
             console.log('Success:', data);
-            // Handle success on the client side
+            if (data.success) {
+                alert("Account Created");
+                localStorage.setItem("loggedDetails", JSON.stringify([{ isLogged: true }, userData]))
+                let pageFrom = JSON.parse(localStorage.getItem("userComingfrom"));
+                if (pageFrom == "projectDetailsPage") {
+                    setTimeout(() => {
+                        window.location.href = "./investment_user_details.html";
+                    }, 1500);
+                } else {
+                    setTimeout(() => {
+                        window.location.href = "./../index.html";
+                    }, 1500);
+                }
+                localStorage.removeItem("userComingfrom");
+            } else {
+
+                // Check for specific error messages from the server
+                if (data.message === 'Duplicate email Entered') {
+                    alert("Duplicate email Entered");
+
+                } else {
+                    alert("error try again");
+
+                }
+            }
+
         })
         .catch((error) => {
             console.error('Error:', error);
-            // Handle error on the client side
+            alert("something wrong");
         });
 }
+
 
 function userExists(newUserEmail) {
     let allUsers = JSON.parse(localStorage.getItem("allUsers"));
@@ -81,20 +96,61 @@ let loginButton = document.querySelector("#login-btn-id");
 function logIn() {
     let mailEntered = document.querySelector("#email").value;
     let passEntered = document.querySelector("#password").value;
-    if (checkUserDetails(mailEntered, passEntered)) {
-        localStorage.setItem("loggedDetails", JSON.stringify([{ isLogged: true }, userIdforLogin]));
-        loginButton.textContent = "Login Success...";
-        let pageFrom = JSON.parse(localStorage.getItem("userComingfrom"));
-        if (pageFrom == "projectDetailsPage") {
-            setTimeout(() => {
-                location.href = "./investment_user_details.html";
-            }, 1500)
-        } else {
-            setTimeout(() => {
-                location.href = "./../index.html";
-            }, 1500)
-        }
-        localStorage.removeItem("userComingfrom");
+
+    if (true) {
+        var userData = {
+            email: mailEntered,
+            password: passEntered,
+        };
+
+        fetch('http://localhost:4000/api/v1/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userData),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                if (data.success) {
+                    const userData = {
+                        userFName: data.user.name,
+                        userLName: data.user.lName,
+                        userEmail: data.email,
+                        userPass: data.password,
+                    };
+                    alert("login successfully");
+                    localStorage.setItem("loggedDetails", JSON.stringify([{ isLogged: true }, userData]))
+                    let pageFrom = JSON.parse(localStorage.getItem("userComingfrom"));
+                    if (pageFrom == "projectDetailsPage") {
+                        setTimeout(() => {
+                            window.location.href = "./investment_user_details.html";
+                        }, 1500);
+                    } else {
+                        setTimeout(() => {
+                            window.location.href = "./../index.html";
+                        }, 1500);
+                    }
+                    localStorage.removeItem("userComingfrom");
+                } else {
+
+                    // Check for specific error messages from the server
+                    if (data.message === 'Duplicate email Entered') {
+                        alert("Duplicate email Entered");
+
+                    } else {
+                        alert("error try again");
+
+                    }
+                }
+
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert("something wrong");
+            });
+
     } else {
         loginButton.textContent = "Invalid Credentials...";
         setTimeout(() => {
@@ -105,14 +161,3 @@ function logIn() {
 
 
 
-function checkUserDetails(mailEntered, passEntered) {
-    let allUsers = JSON.parse(localStorage.getItem("allUsers"));
-    if (allUsers == null) return false;
-    for (var i = 0; i < allUsers.length; i++) {
-        if (allUsers[i].userEmail == mailEntered && allUsers[i].userPass == passEntered) {
-            userIdforLogin = allUsers[i];
-            return true;
-        }
-    }
-    return false;
-}
