@@ -38,7 +38,7 @@ function signUp() {
         userEmail: email,
         userPass: password,
     };
-    fetch('http://localhost:4000/api/v1/register', {
+    fetch('https://hay-backend-red.vercel.app/api/v1/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -103,7 +103,7 @@ function logIn() {
             password: passEntered,
         };
 
-        fetch('http://localhost:4000/api/v1/login', {
+        fetch('https://hay-backend-red.vercel.app/api/v1/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
