@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,190 +16,273 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
 
 </head>
+
 <body>
     <nav id="nav_cont">
         <div id="nav_logo_div">
-        <a href="./index.html">
-          <img id="nav_logo_img" src="./../images/Creators_nav_logo.png"></div>
-        </a>
+            <a href="./index.html">
+                <img id="nav_logo_img" src="./../images/Creators_nav_logo.png">
+            </a>
+        </div>
         <div id="nav_ele">
             <a id="nav_anchor_Signin" onclick="showdropdown()" href="./../pages/login.html">Sign In</a>
             <a id="nav_anchor_getfunding" href="./../pages/funding.html">Get Funding</a>
-            <a id="nav_anchor_fill_startinvesting" href="./../pages/start-investing.html"><span>Start Investing</span></a>
+            <a id="nav_anchor_fill_startinvesting" href="./../pages/start-investing.html"><span>Start
+                    Investing</span></a>
         </div>
     </nav>
-    <div class="index_nav_drop"><p>Hello, <span id="drop_username">username</span> </p>
-           <p onclick="signout()">Sign Out</p></div>
+    <div class="index_nav_drop">
+        <p>Hello, <span id="drop_username">username</span> </p>
+        <p onclick="signout()">Sign Out</p>
+    </div>
     <div class="m">
-      <section class="main">
-        <div class="top">
-            <h1>Let's begin the path to</br>
-           <span class="color">Finding Investors</span> </h1>
-           
-        </div>
-      
-            
-            <form onsubmit="submission(event)">
-                <h3>To get started, tell us a little about your company:</h3>
-                <div class="d">
-                   
-                <div class="d1">
-                   
-                    <label>First name</label>
-                </br>
-                <input type="text" class="box" required/>
-            </br>
-            <label>Company name</label>
-              </br>
-          <input type="text" class="box"  required/>
-            </br>
-            <label>Phone number</label>
-        </br>
-          <input type="tel" class="box"  required/>
-                </div>
-                  
-                   
-                           
-                
-                <div class="d2">
-                    <label>Last name</label>
-                </br>
-                <input type="text" class="box"  required/>
-            </br>
-            <label>Email</label>
-        </br>
-                    <input type="email" class="box"  required/>
-           </br> 
-           <label>Website URL</label>
-        </br>
-        <input type="url" class="box"  required>
-    </br>
-                    
-                </div>
+        <section class="main">
+            <div class="top">
+                <h1>Let's begin the path to</br>
+                    <span class="color">Finding Investors</span>
+                </h1>
             </div>
-            <div class="d"></br></br></div>
-            <div class="d">
-                
-                    <label>How much have you previously raised?</label>
-                </br>
-                    <select name="money" id="g" class="box" required>
-                        <option value="">Please Select</option>
-                        <option value="none">$0</option>
-                        <option value="1">Upto $100K</option>
-                        <option value="2">$100k-$500k</option>
-                        <option value="3">$500k-$1M</option>
-                        <option value="4">$1M-$5M</option>
-                        <option value="5">$5M-$10M</option>
-                        <option value="6">$10M+</option>
-                    </select>
-                    
-                    </br>
-                <label>How are you incorporated?</label>
-                </br>
-                <select name="corp" id="corp"  class="box" required >
-                 <option value="">Please Select</option>
-                  <option value="c">C-Corp</option>
-                  <option value="s">S-Corp</option>
-                  <option value="sp">Sole Properiter</option>
-                  <option value="llc">LLC</option>
-                  <option value="nc">Not Incorporated</option>
-                  <option value="ltd">LTD</option>
-                  <option value="np">Non Profit</option>
-                  <option value="o">Others</option>
-                </select>
-            </br>
-                    <label>Please tell us about your company, including 3 reasons investors would love to invest:</label>
-                </br>
-                <textarea id="text" name="text" class="box" required></textarea> 
-            </br>
-            <form action="/action_page.php">
-                <input type="file" id="myFile" name="filename"  required/>
-            </br>
-        </div>
-        <div class="top">
-                <input type="submit"  id="btn" placeholder="Next Step">
-             </div>
-              
-            </form>
-    
-    </section>
-    <section >
-        <div class="special_image">
-           
 
-        </div>
-    </section>
-</div>
+            <form id="investForm" onsubmit="return validateForm()">
+                <h3>To get started, tell us a little about your company:</h3>
+
+                <div class="d">
+                    <div class="d1">
+                        <label for="firstName">First name:</label>
+                        <input type="text" id="firstName" class="box" required>
+                    </div>
+
+                    <div class="d1">
+                        <label for="lastName">Last name:</label>
+                        <input type="text" id="lastName" class="box" required>
+                    </div>
+
+                    <div class="d1">
+                        <label for="companyName">Company name:</label>
+                        <input type="text" id="companyName" class="box" required>
+                    </div>
+                </div>
+
+                <div class="d">
+                    <div class="d1">
+                        <label for="phoneNumber">Phone number:</label>
+                        <input type="tel" id="phoneNumber" class="box" required>
+                    </div>
+
+                    <div class="d1">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" class="box" required>
+                    </div>
+
+                    <div class="d1">
+                        <label for="websiteUrl">Website URL:</label>
+                        <input type="url" id="websiteUrl" class="box" required>
+                    </div>
+                </div>
+
+                <div class="d">
+                    <div class="d1">
+                        <label for="moneyRaised">How much have you previously raised?</label>
+                        <select id="moneyRaised" class="box" required>
+                            <option value="">Please Select</option>
+                            <option value="none">$0</option>
+                            <option value="1">Upto $100K</option>
+                            <option value="2">$100k-$500k</option>
+                            <option value="3">$500k-$1M</option>
+                            <option value="4">$1M-$5M</option>
+                            <option value="5">$5M-$10M</option>
+                            <option value="6">$10M+</option>
+                        </select>
+                    </div>
+
+                    <div class="d1">
+                        <label for="incorporationType">How are you incorporated?</label>
+                        <select id="incorporationType" class="box" required>
+                            <option value="">Please Select</option>
+                            <option value="c">C-Corp</option>
+                            <option value="s">S-Corp</option>
+                            <option value="sp">Sole Proprietor</option>
+                            <option value="llc">LLC</option>
+                            <option value="nc">Not Incorporated</option>
+                            <option value="ltd">LTD</option>
+                            <option value="np">Non Profit</option>
+                            <option value="o">Others</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="d">
+                    <label for="companyDescription">Please tell us about your company, including 3 reasons investors would love to invest:</label>
+                    <textarea id="companyDescription" class="box" required></textarea>
+                </div>
+
+                <div class="top">
+<button type="submit" onclick="submitForm()">Submit</button>
+                </div>
+            </form>
+
+        </section>
+        <section>
+            <div class="special_image">
+
+            </div>
+        </section>
+    </div>
     <script>
-        function submission(event){
-           event.preventDefault();
-            window.location.replace("./../pages/thansk.html");
+        function validateForm() {
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const companyName = document.getElementById('companyName').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const email = document.getElementById('email').value;
+            const websiteUrl = document.getElementById('websiteUrl').value;
+            const moneyRaised = document.getElementById('moneyRaised').value;
+            const incorporationType = document.getElementById('incorporationType').value;
+            const companyDescription = document.getElementById('companyDescription').value;
+
+            // Basic validation, you can add more checks as needed
+            // if (firstName === "" || lastName === "" || companyName === "" || phoneNumber === "" || email === "" || websiteUrl === "" || moneyRaised === "" || incorporationType === "" || companyDescription === "") {
+            //     alert("Please fill in all the required fields.");
+            //     return false;
+            // }
+
+            // Add more validation checks if needed
+
+            return true;
+        }
+
+        function submitForm() {
+            if (validateForm()) {
+                const formData = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    companyName: document.getElementById('companyName').value,
+                    phoneNumber: document.getElementById('phoneNumber').value,
+                    email: document.getElementById('email').value,
+                    websiteUrl: document.getElementById('websiteUrl').value,
+                    moneyRaised: document.getElementById('moneyRaised').value,
+                    incorporationType: document.getElementById('incorporationType').value,
+                    companyDescription: document.getElementById('companyDescription').value,
+                };
+
+                // Make a POST request to your backend
+                fetch('https://hay-backend-red.vercel.app/api/v1/fund-raiser-controllerl', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        // Add any handling logic here
+                    })
+                    .catch(error => {
+                        console.error('Error submitting form:', error);
+                        // Add error handling logic here
+                    });
+            }
         }
     </script>
 
-<div id="index_footer_container">
+    <div id="index_footer_container">
 
 
-    <div id="index_footer_about">
-          <div class="index_footer_div_1" >
-                           <img id="index_footer_div_img_logo" src="./../images/Creators_nav_logo.png">
-                           <p id="index_footer_reserved_rights">© 2020 All Rights Reserved</p>
-          </div>
-        <div class="index_footer_div"> 
-                                       <p class="index_footer_div_heading">About</p>
-                                       <p>Our Team</p>
-                                       <p>Equity Crowdfunding 101</p>
-                                       <p>Blog</p>
-                                       <p>Creators Careers</p>
-                                       <p>Portfolio Job Board</p>
+        <div id="index_footer_about">
+            <div class="index_footer_div_1">
+                <img id="index_footer_div_img_logo" src="./../images/Creators_nav_logo.png">
+                <p id="index_footer_reserved_rights">© 2020 All Rights Reserved</p>
+            </div>
+            <div class="index_footer_div">
+                <p class="index_footer_div_heading">About</p>
+                <p>Our Team</p>
+                <p>Equity Crowdfunding 101</p>
+                <p>Blog</p>
+                <p>Creators Careers</p>
+                <p>Portfolio Job Board</p>
+            </div>
+            <div class="index_footer_div">
+                <p class="index_footer_div_heading">Companies</p>
+                <p>Raise Capital</p>
+                <p>How it Works</p>
+                <p>Why Creators</p>
+                <p>Founder FAQ</p>
+                <p>Refer Founders</p>
+                <p>Partnerships</p>
+            </div>
+            <div class="index_footer_div">
+                <p class="index_footer_div_heading">Investors</p>
+                <p>Start Investing</p>
+                <p>How Investing Works</p>
+                <p>Investor FAQ</p>
+                <p>Earn 10% Bonus Shares</p>
+                <p>Form CRS</p>
+            </div>
+            <div class="index_footer_div">
+                <p class="index_footer_div_heading">Legal/Contact</p>
+                <p>Terms of Use</p>
+                <p>Privacy Policy</p>
+                <p>Disclaimer</p>
+                <p>Annual Reports</p>
+                <p>Help Center</p>
+                <p>Contact Us</p>
+            </div>
+
+
+
         </div>
-        <div class="index_footer_div">
-                                       <p class="index_footer_div_heading">Companies</p>
-                                       <p>Raise Capital</p>
-                                       <p>How it Works</p>
-                                       <p>Why Creators</p>
-                                       <p>Founder FAQ</p>
-                                       <p>Refer Founders</p>
-                                       <p>Partnerships</p>
+
+
+
+        <div id="index_important_message">
+            <p class="index_important_message_bold">Important Message</p>
+            <p>IN MAKING AN INVESTMENT DECISION, INVESTORS MUST RELY ON THEIR OWN EXAMINATION OF THE ISSUER AND THE
+                TERMS OF THE OFFERING, INCLUDING THE MERITS AND RISKS INVOLVED. INVESTMENTS ON Creators ARE SPECULATIVE,
+                ILLIQUID, AND INVOLVE A HIGH DEGREE OF RISK, INCLUDING THE POSSIBLE LOSS OF YOUR ENTIRE INVESTMENT.​</p>
+            <p> <span class="index_important_message_bold"> <a href="index.html">www.Creators.com</a> </span> is a
+                website owned and operated by Creators Crowdfunding, Inc. (“Creators”), which is neither a registered
+                broker-dealer, investment advisor nor funding portal.</p>
+            <p>Unless indicated otherwise with respect to a particular issuer, all securities-related activity is
+                conducted by regulated affiliates of Creators: Creators Capital, LLC, a funding portal registered here
+                with the US Securities and Exchange Commission (SEC) and here as a member of the Financial Industry
+                Regulatory Authority (FINRA), or Creators Primary, LLC, a broker-dealer registered with the SEC and
+                FINRA/SIPC. You can review the background of our broker-dealer and our investment professionals on
+                FINRA’s BrokerCheck here. Creators Secondary is an alternative trading system regulated by the SEC and
+                operated by Creators Primary, LLC, a broker dealer registered with the SEC and FINRA.</p>
+            <p>Investment opportunities posted and accessible through the site are of three types:</p>
+            <p>1) Regulation A offerings (JOBS Act Title IV; known as Regulation A+), which are offered to
+                non-accredited and accredited investors alike. These offerings are made through Creators Primary, LLC
+                (unless otherwise indicated). 2) Regulation D offerings (Rule 506(c)), which are offered only to
+                accredited investors. These offerings are made through Creators Primary, LLC. 3) Regulation Crowdfunding
+                offerings (JOBS Act Title III), which are offered to non-accredited and accredited investors alike.
+                These offerings are made through Creators Capital, LLC. Some of these offerings are open to the general
+                public, however there are important differences and risks.</p>
+            <p>Any securities offered on this website have not been recommended or approved by any federal or state
+                securities commission or regulatory authority. Creators and its affiliates do not provide any investment
+                advice or recommendation and do not provide any legal or tax advice with respect to any securities. All
+                securities listed on this site are being offered by, and all information included on this site is the
+                responsibility of, the applicable issuer of such securities. Creators does not verify the adequacy,
+                accuracy or completeness of any information. Neither Creators nor any of its officers, directors, agents
+                and employees makes any warranty, express or implied, of any kind whatsoever related to the adequacy,
+                accuracy, or completeness of any information on this site or the use of information on this site. See
+                additional general disclosures here.</p>
+            <p>By accessing this site and any pages on this site, you agree to be bound by our Terms of Use and Privacy
+                Policy, as may be amended from time to time without notice or liability.</p>
+            <p>Canadian Investors</br>
+
+                Investment opportunities posted and accessible through the site will not be offered to Canadian resident
+                investors.</p>
+            <p>Potential investors are strongly advised to consult their legal, tax and financial advisors before
+                investing. The securities offered on this site are not offered in jurisdictions where public
+                solicitation for offerings is not permitted; it is solely your responsibility to comply with the laws
+                and regulations of your country of residence.</p>
+            <p>Potential investors are strongly advised to consult their legal, tax and financial advisors before
+                investing. The securities offered on this site are not offered in jurisdictions where public
+                solicitation for offerings is not permitted; it is solely your responsibility to comply with the laws
+                and regulations of your country of residence.</p>
         </div>
-        <div class="index_footer_div">
-                                    <p class="index_footer_div_heading">Investors</p>
-                                     <p>Start Investing</p>
-                                        <p>How Investing Works</p>
-                                        <p>Investor FAQ</p>
-                                        <p>Earn 10% Bonus Shares</p>
-                                        <p>Form CRS</p>
-                                    </div>
-        <div class="index_footer_div">   <p class="index_footer_div_heading">Legal/Contact</p>
-                                        <p>Terms of Use</p>
-                                       <p>Privacy Policy</p>
-                                       <p>Disclaimer</p>
-                                       <p>Annual Reports</p>
-                                       <p>Help Center</p>
-                                       <p>Contact Us</p>
-                                    </div>
-      
-    
-    
     </div>
-    
-    
-    
-    <div id="index_important_message">
-        <p class="index_important_message_bold">Important Message</p>
-        <p>IN MAKING AN INVESTMENT DECISION, INVESTORS MUST RELY ON THEIR OWN EXAMINATION OF THE ISSUER AND THE TERMS OF THE OFFERING, INCLUDING THE MERITS AND RISKS INVOLVED. INVESTMENTS ON Creators ARE SPECULATIVE, ILLIQUID, AND INVOLVE A HIGH DEGREE OF RISK, INCLUDING THE POSSIBLE LOSS OF YOUR ENTIRE INVESTMENT.​</p>
-       <p> <span class="index_important_message_bold"> <a href="index.html">www.Creators.com</a> </span> is a website owned and operated by Creators Crowdfunding, Inc. (“Creators”), which is neither a registered broker-dealer, investment advisor nor funding portal.</p>
-       <p>Unless indicated otherwise with respect to a particular issuer, all securities-related activity is conducted by regulated affiliates of Creators: Creators Capital, LLC, a funding portal registered here with the US Securities and Exchange Commission (SEC) and here as a member of the Financial Industry Regulatory Authority (FINRA), or Creators Primary, LLC, a broker-dealer registered with the SEC and FINRA/SIPC. You can review the background of our broker-dealer and our investment professionals on FINRA’s BrokerCheck here. Creators Secondary is an alternative trading system regulated by the SEC and operated by Creators Primary, LLC, a broker dealer registered with the SEC and FINRA.</p>
-       <p>Investment opportunities posted and accessible through the site are of three types:</p>
-       <p>1) Regulation A offerings (JOBS Act Title IV; known as Regulation A+), which are offered to non-accredited and accredited investors alike. These offerings are made through Creators Primary, LLC (unless otherwise indicated). 2) Regulation D offerings (Rule 506(c)), which are offered only to accredited investors. These offerings are made through Creators Primary, LLC. 3) Regulation Crowdfunding offerings (JOBS Act Title III), which are offered to non-accredited and accredited investors alike. These offerings are made through Creators Capital, LLC. Some of these offerings are open to the general public, however there are important differences and risks.</p>
-       <p>Any securities offered on this website have not been recommended or approved by any federal or state securities commission or regulatory authority. Creators and its affiliates do not provide any investment advice or recommendation and do not provide any legal or tax advice with respect to any securities. All securities listed on this site are being offered by, and all information included on this site is the responsibility of, the applicable issuer of such securities. Creators does not verify the adequacy, accuracy or completeness of any information. Neither Creators nor any of its officers, directors, agents and employees makes any warranty, express or implied, of any kind whatsoever related to the adequacy, accuracy, or completeness of any information on this site or the use of information on this site. See additional general disclosures here.</p>
-       <p>By accessing this site and any pages on this site, you agree to be bound by our Terms of Use and Privacy Policy, as may be amended from time to time without notice or liability.</p>
-       <p>Canadian Investors</br>
-    
-        Investment opportunities posted and accessible through the site will not be offered to Canadian resident investors.</p>
-    <p>Potential investors are strongly advised to consult their legal, tax and financial advisors before investing. The securities offered on this site are not offered in jurisdictions where public solicitation for offerings is not permitted; it is solely your responsibility to comply with the laws and regulations of your country of residence.</p>
-    <p>Potential investors are strongly advised to consult their legal, tax and financial advisors before investing. The securities offered on this site are not offered in jurisdictions where public solicitation for offerings is not permitted; it is solely your responsibility to comply with the laws and regulations of your country of residence.</p>
-    </div>
-    </div>             
 </body>
+
 </html>
